@@ -59,19 +59,19 @@ jobs:
             with:
               image: alpine:3.21.0,alpine:3.21.1,alpine:3.21.2
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: OCI Image Supported Platforms
         id: platforms
         uses: ./
         with: ${{ matrix.with }}
       - name: Assert ${{ matrix.name }} Platforms (JSON)
-        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2
+        uses: nick-fields/assert-action@0efd6166067d9c59d89c710fab4f79fb066f8985 # v4.0.1
         with:
           expected: ${{ matrix.expected }}
           actual: ${{ steps.platforms.outputs.platform }}
           comparison: exact
       - name: Assert ${{ matrix.name }} Platforms (CSV)
-        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2
+        uses: nick-fields/assert-action@0efd6166067d9c59d89c710fab4f79fb066f8985 # v4.0.1
         with:
           expected: ${{ matrix.expected_csv }}
           actual: ${{ steps.platforms.outputs.platform_csv }}
